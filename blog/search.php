@@ -1,50 +1,53 @@
 <?php
 /**
- * The template for displaying Search Results pages
+ * The template for displaying search results pages
  *
  * @package WordPress
- * @subpackage Twenty_Fourteen
- * @since Twenty Fourteen 1.0
+ * @subpackage Twenty_Sixteen
+ * @since Twenty Sixteen 1.0
  */
 
 get_header(); ?>
 
 	<section id="primary" class="content-area">
-		<div id="content" class="site-content" role="main">
+		<main id="main" class="site-main" role="main">
 
-			<?php if ( have_posts() ) : ?>
+		<?php if ( have_posts() ) : ?>
 
 			<header class="page-header">
-				<h1 class="page-title"><?php printf( __( 'Search Results for: %s', 'twentyfourteen' ), get_search_query() ); ?></h1>
+				<h1 class="page-title"><?php printf( __( 'Search Results for: %s', 'twentysixteen' ), '<span>' . esc_html( get_search_query() ) . '</span>' ); ?></h1>
 			</header><!-- .page-header -->
 
-				<?php
-					// Start the Loop.
-				while ( have_posts() ) :
-					the_post();
+			<?php
+			// Start the loop.
+			while ( have_posts() ) : the_post();
 
-					/*
-					 * Include the post format-specific template for the content. If you want to
-					 * use this in a child theme, then include a file called content-___.php
-					 * (where ___ is the post format) and that will be used instead.
-					 */
-					get_template_part( 'content', get_post_format() );
+				/**
+				 * Run the loop for the search to output the results.
+				 * If you want to overload this in a child theme then include a file
+				 * called content-search.php and that will be used instead.
+				 */
+				get_template_part( 'template-parts/content', 'search' );
 
-					endwhile;
-					// Previous/next post navigation.
-					twentyfourteen_paging_nav();
+			// End the loop.
+			endwhile;
 
-				else :
-					// If no content, include the "No posts found" template.
-					get_template_part( 'content', 'none' );
+			// Previous/next page navigation.
+			the_posts_pagination( array(
+				'prev_text'          => __( 'Previous page', 'twentysixteen' ),
+				'next_text'          => __( 'Next page', 'twentysixteen' ),
+				'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'twentysixteen' ) . ' </span>',
+			) );
 
-				endif;
-			?>
+		// If no content, include the "No posts found" template.
+		else :
+			get_template_part( 'template-parts/content', 'none' );
 
-		</div><!-- #content -->
-	</section><!-- #primary -->
+		endif;
+		?>
 
-<?php
-get_sidebar( 'content' );
-get_sidebar();
-get_footer();
+		</main><!-- .site-main -->
+	</section><!-- .content-area -->
+
+<?php get_sidebar(); ?>
+<?php get_footer(); ?>

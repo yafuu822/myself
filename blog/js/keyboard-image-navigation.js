@@ -1,20 +1,25 @@
 /**
- * Twenty Fourteen keyboard support for image navigation.
+ * Twenty Sixteen keyboard support for image navigation.
  */
+
 ( function( $ ) {
-	$( document ).on( 'keydown.twentyfourteen', function( e ) {
+	$( document ).on( 'keydown.twentysixteen', function( e ) {
 		var url = false;
 
 		// Left arrow key code.
-		if ( e.which === 37 ) {
-			url = $( '.previous-image a' ).attr( 'href' );
+		if ( 37 === e.which ) {
+			url = $( '.nav-previous a' ).attr( 'href' );
 
 		// Right arrow key code.
-		} else if ( e.which === 39 ) {
-			url = $( '.entry-attachment a' ).attr( 'href' );
+		} else if ( 39 === e.which ) {
+			url = $( '.nav-next a' ).attr( 'href' );
+
+		// Other key code.
+		} else {
+			return;
 		}
 
-		if ( url && ( ! $( 'textarea, input' ).is( ':focus' ) ) ) {
+		if ( url && ! $( 'textarea, input' ).is( ':focus' ) ) {
 			window.location = url;
 		}
 	} );
