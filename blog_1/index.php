@@ -1,7 +1,4 @@
-
-
-
-aaaaaaaaaaaa<?php
+<?php
 /**
  * The main template file
  *
@@ -30,6 +27,17 @@ if ( is_front_page() && twentyfourteen_has_featured_posts() ) {
 
 	<div id="primary" class="content-area">
 		<div id="content" class="site-content" role="main">
+            <div>
+                <p>
+                    <span>aaa</span>
+                </p>
+            </div>
+            <div>
+                <p>
+                    <span>aaa</span>
+                </p>
+            </div>
+
 
 		<?php
 		if ( have_posts() ) :
@@ -42,7 +50,10 @@ if ( is_front_page() && twentyfourteen_has_featured_posts() ) {
 				 * use this in a child theme, then include a file called content-___.php
 				 * (where ___ is the post format) and that will be used instead.
 				 */
-				get_template_part( 'content', get_post_format() );
+				//get_template_part( 'content', get_post_format() );
+                echo '<div style="text-align: center;">' . get_the_title() . '</div>' ;
+                echo '<div style="width:90%;text-align: center;padding:5%">' . mb_substr(strip_tags($post-> post_content),0,300). '</div>' ;
+
 
 				endwhile;
 			// Previous/next post navigation.
