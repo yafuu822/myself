@@ -3401,7 +3401,8 @@ p > video {
 	}
 
 	.site-header {
-		padding: 5.25em 4.5455%;
+		/*padding: 5.25em 4.5455%;*/
+		padding: 1% 5%;
 	}
 
 	.site-branding,
