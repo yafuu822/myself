@@ -2847,8 +2847,7 @@ p > video {
 	}
 
 	.entry-title {
-		font-size: 33px;
-		font-size: 2.0625rem;
+		font-size: 28px;
 		line-height: 1.2727272727;
 		margin-bottom: 0.8484848485em;
 	}
@@ -3402,7 +3401,8 @@ p > video {
 	}
 
 	.site-header {
-		padding: 5.25em 4.5455%;
+		/*padding: 5.25em 4.5455%;*/
+		padding: 1% 5%;
 	}
 
 	.site-branding,
@@ -3541,8 +3541,8 @@ p > video {
 	}
 
 	body:not(.search-results) article:not(.type-page) .entry-content {
-		float: right;
-		width: 71.42857144%;
+		width: 90%;
+		margin:auto;
 	}
 
 	body:not(.search-results) article:not(.type-page) .entry-content > blockquote.alignleft.below-entry-meta {
